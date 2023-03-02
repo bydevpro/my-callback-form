@@ -24,7 +24,14 @@ class LoginController extends Controller
     }
     
     if (Auth::attempt($formFields)) {
+        if($user->isManager === 'yes')
+    {
+        return redirect()->intended(route('user.admin'));
+    }
+    else
+    {
         return redirect()->intended(route('user.callback'));
+    }
     }
 
     return redirect(route('user.login'))->withErrors([

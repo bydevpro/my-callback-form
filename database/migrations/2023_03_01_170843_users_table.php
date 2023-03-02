@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email', 255)->nullable(false)->unique('email');
             $table->string('password', 255)->nullable(false);
             $table->string('remeber_token', 100)->nullable(true);
-            $table->string('isManager',255)->nullable(false);
+            $table->string('isManager',255)->nullable(false)->default('no');
             $table->timestamp('created_at', 'updated_at');
         });
     }
