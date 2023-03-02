@@ -33,6 +33,6 @@ route::name('user.')->group(function(){
         Auth::logout();
         return redirect ('/login');
     });
-    //Route::get ('register')
+    Route::post('/callback', [\App\Http\Controllers\CallbackController::class, 'submit'])->name('callback.submit');
 
 });
