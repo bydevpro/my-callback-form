@@ -3,8 +3,8 @@
 
 
 
-
-    <h1>Форма обратной связи</h1>
+<link rel="stylesheet" href='css/form.css'/>
+    <h2>Форма обратной связи</h2>
     <form action="{{ route('user.callback.submit') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
