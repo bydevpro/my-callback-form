@@ -1,3 +1,24 @@
+<h2>Тестовое задание</h2>
+<p>В админке использовалась библиотека сортировки из <a href="https://ruseller.com/lessons.php?rub=28&id=227">reuseller.com</a></p>
+<h3>Исключение SQLSTATE42000:1064</h3>
+<p>Создаем таблицу в ручную</p>
+create table `users` (`id` int unsigned not null auto_increment primary key, 
+`email` varchar(255) not null, 
+`password` varchar(255) not null, 
+`remeber_token` varchar(100) null, 
+`isManager` varchar(255) not null default 'no', 
+`created_at` timestamp not null, 
+`updated_at` timestamp not null) 
+default character set utf8mb4 collate 'utf8mb4_unicode_ci';
+<p>Исключение возникает при работе с MYSQL 8.0.1</p>
+с настройками конфига
+[mysqld]
+
+character-set-server = utf8mb4 collation-server = utf8mb4unicodeci init-connect='SET NAMES utf8mb4
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
