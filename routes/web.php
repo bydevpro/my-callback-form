@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 route::name('user.')->group(function(){
