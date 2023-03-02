@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('theme');
             $table->text('message');
             $table->string('file')->nullable();
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
@@ -27,5 +28,6 @@ return new class extends Migration
     public function down(): void
     {
         //
+        Schema::dropIfExists('callback');
     }
 };
