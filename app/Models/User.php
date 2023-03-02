@@ -42,9 +42,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    //Возвращает имя пользователя
     public function getName()
     {
         return $this->name;
+    }
+    //Возвращает тип пользователя
+    public function getType()
+    {
+        return $this->isManager;
     }
 
     

@@ -19,7 +19,7 @@ class LoginController extends Controller
 
     if (! $user) {
         return redirect(route('user.login'))->withErrors([
-            'password' => 'The provided credentials are incorrect.'
+            'password' => 'Ошибка!Проверьте данные и повторите ввод.'
         ]);
     }
     
@@ -35,7 +35,7 @@ class LoginController extends Controller
     }
 
     return redirect(route('user.login'))->withErrors([
-        'email' => 'Error authenticating. Please check your details and try again.'
+        'email' => 'Ошибка!Проверьте данные и повторите ввод.'
     ]);
 }
 

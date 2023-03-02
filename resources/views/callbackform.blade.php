@@ -1,9 +1,7 @@
 @auth
-  <a href="/logout">Logout</a>
-  <p>Hello, {{ Auth::user()->getName() }}</p>
-@else
-  <a href="/login">Login</a>
-@endauth
+@include('header')
+
+
 
 
     <h1>Форма обратной связи</h1>
@@ -39,3 +37,12 @@
             <button type="submit">Отправить</button>
         </div>
     </form>
+    @else
+    <div class="card" style="width: 18rem; margin-top:25%; margin-left:40%;box-shadow: 10px 10px 8px #888888;">
+  <div class="card-body">
+    <h5 class="card-title">Пожалуйста, авторизируйтесь</h5>
+    <a class="btn btn-outline-success my-2 my-sm-0" href="{{ route('user.login') }}">Войти</a>
+</div>
+
+@endauth
+@include('footer')

@@ -7,12 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Cache;
 use App\Models\Callback as Callback;
+use Illuminate\Support\Facades\Auth;
 
 class CallbackController extends Controller
 {
+   
+
     public function submit(Request $request)
     {
-        // Validate the request data
+        // Валидация данных
     $request->validate([
         'user_id' => 'required',
         'subject' => 'required',
@@ -26,25 +29,25 @@ class CallbackController extends Controller
         return back()->withErrors([
             'subject' => 'Вы сегодня уже оставляли заявку. Ожидайте 24 часа.']);
         }
-    // Store the data
+    
     $callback = new Callback();
     $callback->theme = $request->subject;
     $callback->message = $request->message;
     $callback->user_id = $request->user_id;
 
-    // Upload and rename file
+    //Переименуем файл
     if ($request->hasFile('attachment')) {
         $file = $request->file('attachment');
         $fileName = time() . '.' . $file->getClientOriginalExtension();
-        // Move the file and rename it
+        // загрузим в папку
         $file->move(public_path('uploads'), $fileName);
-        // Set the file name
+        //ыернем новое название что бы закинуть в БД
         $callback->file = $fileName;
     }
 
-    // Save the data
+    // сохраняем массив
     $callback->save();
 
-        return back()->with('success', 'Your feedback has been submitted successfully!');
+        return back()->withErrors(['subject' =>'Ваша заявка отправлена']);
     }
 }

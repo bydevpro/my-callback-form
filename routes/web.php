@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Callback;
+use Symfony\Component\HttpFoundation\Response;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,7 @@ Route::get('/', function () {
 route::name('user.')->group(function(){
     Route::view ('/callback','callbackform')->middleware('auth')->name('callback');
     Route::view ('/admin','admin')->middleware('auth')->name('admin');
+    Route::get('/admin',  [\App\Http\Controllers\AdminTableController::class, 'index'])->name('admin'); 
     Route::get('/login', function(){
         if(Auth::check()){
             return redirect (route('user.callback'));
