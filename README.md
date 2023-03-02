@@ -1,5 +1,20 @@
 <h2>Тестовое задание</h2>
 <p>В админке использовалась библиотека сортировки из <a href="https://ruseller.com/lessons.php?rub=28&id=227">reuseller.com</a></p>
+<h3>Исключение SQLSTATE42000:1064</h3>
+<p>Создаем таблицу в ручную</p>
+create table `users` (`id` int unsigned not null auto_increment primary key, 
+`email` varchar(255) not null, 
+`password` varchar(255) not null, 
+`remeber_token` varchar(100) null, 
+`isManager` varchar(255) not null default 'no', 
+`created_at` timestamp not null, 
+`updated_at` timestamp not null) 
+default character set utf8mb4 collate 'utf8mb4_unicode_ci'
+<p>Исключение возникает при работе с MYSQL 8.0.1</p>
+с настройками конфига
+[mysqld]
+
+character-set-server = utf8mb4 collation-server = utf8mb4unicodeci init-connect='SET NAMES utf8mb4
 
 
 
