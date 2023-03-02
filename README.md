@@ -9,7 +9,7 @@ create table `users` (`id` int unsigned not null auto_increment primary key,
 `isManager` varchar(255) not null default 'no', 
 `created_at` timestamp not null, 
 `updated_at` timestamp not null) 
-default character set utf8mb4 collate 'utf8mb4_unicode_ci'
+default character set utf8mb4 collate 'utf8mb4_unicode_ci';
 <p>Исключение возникает при работе с MYSQL 8.0.1</p>
 с настройками конфига
 [mysqld]
